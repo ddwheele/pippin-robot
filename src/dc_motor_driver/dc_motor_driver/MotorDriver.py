@@ -17,13 +17,12 @@ class MotorDriver(Node):
             self.listener_callback,
             10)
         self.subscription  # prevent unused variable warning
+        self.kit = MotorKit(i2c=board.I2C())
 
     def listener_callback(self, msg):
         self.get_logger().info('I heard: %f,%f' % (msg.linear.x, msg.linear.y))
-	self.kit.motor1.throttle = msg.linear.x
-	self.kit.motor2.throttle = msg.linear.y
-
-
+        self.kit.motor1.throttle = msg.linear.x
+        self.kit.motor3.throttle = msg.linear.x
 
 def main(args=None):
     rclpy.init(args=args)
