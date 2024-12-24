@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 """
-Utility functions that are commonly used across the visual_servoing package.
+Utility functions for manipulating poses in ROS.
 Used mostly for extending coordinate transformations beyond the scope of transformations.py.
 Written by Alex Zhu (alexzhu(at)seas.upenn.edu)
 """
+
 import numpy as np
 
 import roslib

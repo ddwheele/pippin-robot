@@ -156,7 +156,7 @@ class RobotSim(object):
                                 [self.__x_gt[0,0], self.__x_gt[0,0] + distance*cosx],
                                 [self.__x_gt[1,0], self.__x_gt[1,0] - distance*sinx],'r-')
 
-        plt.hold(True)
+       # plt.hold(True)
 
         # Drawing of robot (building drawing objects for it)
         self.__bot_parts = [ 0 for i in range(len(self.__shapes)) ]
@@ -318,7 +318,7 @@ class RobotSim(object):
         (where the simulating happens)
         """
         # Prep for the next frame
-        plt.hold(True)
+    #    plt.hold(True)
         self.__frame_num += 1
         if self.done:
             return # early termination
