@@ -1,14 +1,17 @@
 import rclpy
 from rclpy.node import Node
 
-from geometry_msgs.msg import Twist
+import board
+from adafruit_motorkit import MotorKit
 
+from geometry_msgs.msg import Twist
 
 class MotorDriver(Node):
 
     def __init__(self):
         super().__init__('motor_driver')
-        self.subscription = self.create_subscription(
+        self.kit = MotorKit(i2c=board.I2C())
+	self.subscription = self.create_subscription(
             Twist,
             '/cmd_vel',
             self.listener_callback,
@@ -17,6 +20,9 @@ class MotorDriver(Node):
 
     def listener_callback(self, msg):
         self.get_logger().info('I heard: %f,%f' % (msg.linear.x, msg.linear.y))
+	self.kit.motor1.throttle = msg.linear.x
+	self.kit.motor2.throttle = msg.linear.y
+
 
 
 def main(args=None):
